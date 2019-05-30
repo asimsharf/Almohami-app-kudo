@@ -1,0 +1,46 @@
+name: almohami
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl:
+  intl_translation:
+  splashscreen: ^1.2.0
+  rflutter_alert: ^1.0.2
+  cupertino_icons: ^0.1.2
+  scoped_model: ^1.0.1
+  google_fonts_arabic: ^1.1.7
+  flutter_plugin_pdf_viewer: any
+  transparent_image: ^1.0.0
+  url_launcher: ^5.0.2
+  font_awesome_flutter: ^8.0.0
+  intro_slider: ^1.0.8
+  http: ^0.12.0+2
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  json_serializable: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/images/icon.png
+    - assets/images/bg.jpg
+    - assets/images/default.jpg
+
+  fonts:
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/Amiri-Bold.ttf
+        - asset: assets/fonts/Amiri-BoldItalic.ttf
+        - asset: assets/fonts/Amiri-Italic.ttf
+        - asset: assets/fonts/Amiri-Regular.ttf
