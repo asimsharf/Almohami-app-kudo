@@ -30,12 +30,6 @@ class _MainPageState extends State<MainPage> {
           elevation: 3.5,
           child: Container(
             alignment: Alignment.center,
-//            decoration: new BoxDecoration(
-//              image: new DecorationImage(
-//                image: new AssetImage("assets/images/icon.jpg"),
-//                fit: BoxFit.cover,
-//              ),
-//            ),
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
@@ -46,7 +40,7 @@ class _MainPageState extends State<MainPage> {
                         fontFamily: ArabicFonts.Cairo,
                         package: 'google_fonts_arabic',
                       )),
-                  accountEmail: new Text("أطلب محامي الأن بضغطة زر",
+                  accountEmail: new Text("أطلب محامي الأن بضغطة باسهل الطرق",
                       style: TextStyle(
                         fontFamily: ArabicFonts.Cairo,
                         package: 'google_fonts_arabic',

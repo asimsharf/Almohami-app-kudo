@@ -6,8 +6,8 @@ class ModelLawyers {
   String work_fields;
   String address_info;
   String pdf_docs;
-  String profile_photo;
-  String cover_photo;
+  String profile_photo = 'assets/images/icon.png';
+  String cover_photo = 'assets/images/icon.png';
 
   ModelLawyers(
       {this.user_id,

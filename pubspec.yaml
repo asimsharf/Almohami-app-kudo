@@ -14,6 +14,7 @@ dependencies:
   intl:
   intl_translation:
   splashscreen: ^1.2.0
+  dio: ^2.1.13
   rflutter_alert: ^1.0.2
   cupertino_icons: ^0.1.2
   scoped_model: ^1.0.1

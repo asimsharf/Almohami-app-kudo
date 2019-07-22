@@ -46,7 +46,6 @@ class _LawyersDetailsState extends State<LawyersDetails> {
         fit: StackFit.expand,
         alignment: Alignment.center,
         children: <Widget>[
-          // صورة تفاصيل المحامي
           Column(
             children: <Widget>[
               new Container(
@@ -187,7 +186,7 @@ class _LawyersDetailsState extends State<LawyersDetails> {
                           ),
                           Text(
                             "${widget.work_fields}",
-                            softWrap: false,
+                            softWrap: true,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -202,7 +201,7 @@ class _LawyersDetailsState extends State<LawyersDetails> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text("}المستندات",
+                          Text("المستندات",
                               textAlign: TextAlign.right,
                               style: TextStyle(
                                   fontFamily: ArabicFonts.Cairo,
@@ -299,7 +298,7 @@ class _LawyersDetailsState extends State<LawyersDetails> {
             Expanded(
               child: new FlatButton(
                 onPressed: () =>
-                    launch("whatsapp://send?phone=${widget.officename}"),
+                    launch("whatsapp://send?phone=+249${widget.officename}"),
                 color: Color(0xFFFFC400),
                 splashColor: Colors.yellowAccent,
                 textColor: Colors.black,

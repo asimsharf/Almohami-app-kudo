@@ -12,10 +12,6 @@ class SplashScreenPage extends StatelessWidget {
       photoSize: 80.0,
       loaderColor: Colors.black,
       image: Image.asset("assets/images/icon.png"),
-//      gradientBackground: new LinearGradient(
-//          colors: [Color(0xFF23AFB1), Color(0xFF23AFB1)],
-//          begin: Alignment.topLeft,
-//          end: Alignment.bottomRight),
       title: Text("المحامي",
           style: TextStyle(
               color: Color(0xFFFFC400),
