@@ -35,7 +35,7 @@ class _LawyersState extends State<Lawyers> {
       List<ModelLawyers> tempList = <ModelLawyers>[];
       for (int i = 0; i < response.data.length; i++) {
         var rest = response.data as List;
-        _Model_Lawyers = rest
+        _modelLawyers = rest
             .map<ModelLawyers>(
               (rest) => ModelLawyers.fromJson(rest),
         )
@@ -51,7 +51,7 @@ class _LawyersState extends State<Lawyers> {
           if (response.statusCode == 200) {
             names = tempList;
             names.shuffle();
-            _Model_Lawyers = names;
+            _modelLawyers = names;
           }
         },
       );
@@ -60,7 +60,7 @@ class _LawyersState extends State<Lawyers> {
     }
   }
 
-  List<ModelLawyers> _Model_Lawyers = <ModelLawyers>[];
+  List<ModelLawyers> _modelLawyers = <ModelLawyers>[];
   Future<List<ModelLawyers>> getLawyers() async {
     String link = "http://almohamigroup.com/api.php";
 
@@ -72,7 +72,7 @@ class _LawyersState extends State<Lawyers> {
           if (response.statusCode == 200) {
             var data = json.decode(response.body);
             var rest = data as List;
-            _Model_Lawyers = rest
+            _modelLawyers = rest
                 .map<ModelLawyers>(
                   (rest) => ModelLawyers.fromJson(rest),
             )
@@ -82,9 +82,9 @@ class _LawyersState extends State<Lawyers> {
         },
       );
     } catch (Exception) {
-      return _Model_Lawyers;
+      return _modelLawyers;
     }
-    return _Model_Lawyers;
+    return _modelLawyers;
   }
 
   //---------------------------------------------------------------
@@ -105,7 +105,7 @@ class _LawyersState extends State<Lawyers> {
           setState(
                 () {
               _searchText = "";
-              _Model_Lawyers = names;
+              _modelLawyers = names;
             },
           );
         } else {
@@ -122,7 +122,7 @@ class _LawyersState extends State<Lawyers> {
   Future<Null> _refresh() {
     return getLawyers().then(
           (modelCen) {
-        setState(() => _Model_Lawyers = modelCen);
+        setState(() => _modelLawyers = modelCen);
       },
     );
   }
@@ -167,30 +167,30 @@ class _LawyersState extends State<Lawyers> {
   }
 
   Widget _buildProductList() {
-    Widget CentersList;
-    if (_Model_Lawyers.length > 0) {
-      if (!(_searchText.isEmpty)) {
+    Widget _centersList;
+    if (_modelLawyers.length > 0) {
+      if (_searchText.isNotEmpty) {
         List<ModelLawyers> tempList = <ModelLawyers>[];
-        for (int i = 0; i < _Model_Lawyers.length; i++) {
-          if (_Model_Lawyers[i]
+        for (int i = 0; i < _modelLawyers.length; i++) {
+          if (_modelLawyers[i]
               .Office
               .toLowerCase()
               .contains(_searchText.toLowerCase())) {
-            tempList.add(_Model_Lawyers[i]);
+            tempList.add(_modelLawyers[i]);
           }
         }
-        _Model_Lawyers = tempList;
+        _modelLawyers = tempList;
       }
-      CentersList = new ListView.builder(
+      _centersList = new ListView.builder(
         padding: EdgeInsets.all(1.0),
         itemExtent: 114.0,
         shrinkWrap: true,
-        itemCount: _Model_Lawyers.length,
+        itemCount: _modelLawyers.length,
         itemBuilder: (BuildContext context, index) {
-          final LawyersObj = _Model_Lawyers[index];
+          final _lawyersObj = _modelLawyers[index];
           try {
-            if (LawyersObj.profile_photo == null) {
-              LawyersObj.profile_photo = '';
+            if (_lawyersObj.profile_photo == null) {
+              _lawyersObj.profile_photo = '';
             }
           } catch (Exception) {
             return null;
@@ -219,7 +219,8 @@ class _LawyersState extends State<Lawyers> {
                             child: FadeInImage.assetNetwork(
                               placeholder: 'assets/images/icon.png',
                               image:
-                                  'http://almohamigroup.com/wp-content/uploads/ultimatemember/${LawyersObj.user_id}/${LawyersObj.profile_photo}',
+                              'http://almohamigroup.com/wp-content/uploads/ultimatemember/${_lawyersObj
+                                  .user_id}/${_lawyersObj.profile_photo}',
                             ),
                           ),
                         ),
@@ -237,7 +238,7 @@ class _LawyersState extends State<Lawyers> {
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        '${LawyersObj.Office}',
+                                        '${_lawyersObj.Office}',
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                           fontSize: 15.0,
@@ -253,7 +254,7 @@ class _LawyersState extends State<Lawyers> {
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        "${LawyersObj.work_fields}",
+                                        "${_lawyersObj.work_fields}",
                                         softWrap: false,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
@@ -265,7 +266,7 @@ class _LawyersState extends State<Lawyers> {
                                       ),
                                     ),
                                     TextIcon(
-                                      text: "${LawyersObj.city}",
+                                      text: "${_lawyersObj.city}",
                                       icon: FontAwesomeIcons.city,
                                       isColumn: false,
                                     ),
@@ -278,7 +279,7 @@ class _LawyersState extends State<Lawyers> {
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        '${LawyersObj.officename}',
+                                        '${_lawyersObj.officename}',
                                         style: TextStyle(
                                           fontSize: 8.0,
                                           color: Colors.red,
@@ -288,7 +289,7 @@ class _LawyersState extends State<Lawyers> {
                                       ),
                                     ),
                                     TextIcon(
-                                      text: '${LawyersObj.address_info}',
+                                      text: '${_lawyersObj.address_info}',
                                       icon: Icons.my_location,
                                       isColumn: false,
                                     ),
@@ -308,16 +309,17 @@ class _LawyersState extends State<Lawyers> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => LawyersDetails(
-                        user_id: LawyersObj.user_id,
-                        Office: LawyersObj.Office,
-                        city: LawyersObj.city,
-                        officename: LawyersObj.officename,
-                        work_fields: LawyersObj.work_fields,
-                        address_info: LawyersObj.address_info,
-                        pdf_docs: LawyersObj.pdf_docs,
-                        profile_photo: LawyersObj.profile_photo,
-                        cover_photo: LawyersObj.cover_photo,
+                  builder: (context) =>
+                      lawyersDetails(
+                        user_id: _lawyersObj.user_id,
+                        Office: _lawyersObj.Office,
+                        city: _lawyersObj.city,
+                        officename: _lawyersObj.officename,
+                        work_fields: _lawyersObj.work_fields,
+                        address_info: _lawyersObj.address_info,
+                        pdf_docs: _lawyersObj.pdf_docs,
+                        profile_photo: _lawyersObj.profile_photo,
+                        cover_photo: _lawyersObj.cover_photo,
                       ),
                 ),
               );
@@ -326,7 +328,7 @@ class _LawyersState extends State<Lawyers> {
         },
       );
     } else {
-      CentersList = Center(
+      _centersList = Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -346,7 +348,7 @@ class _LawyersState extends State<Lawyers> {
         ),
       );
     }
-    return CentersList;
+    return _centersList;
   }
 
   Widget _buildBar(BuildContext context) {
@@ -393,7 +395,7 @@ class _LawyersState extends State<Lawyers> {
             package: 'google_fonts_arabic',
           ),
         );
-        _Model_Lawyers = names;
+        _modelLawyers = names;
         _filter.clear();
       }
     });

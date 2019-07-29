@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts_arabic/fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class LawyersDetails extends StatefulWidget {
+class lawyersDetails extends StatefulWidget {
   String user_id;
   String Office;
   String city;
@@ -14,7 +14,7 @@ class LawyersDetails extends StatefulWidget {
   String profile_photo;
   String cover_photo;
 
-  LawyersDetails(
+  lawyersDetails(
       {this.user_id,
       this.Office,
       this.city,
@@ -26,10 +26,10 @@ class LawyersDetails extends StatefulWidget {
       this.cover_photo});
 
   @override
-  _LawyersDetailsState createState() => _LawyersDetailsState();
+  _lawyersDetailsState createState() => _lawyersDetailsState();
 }
 
-class _LawyersDetailsState extends State<LawyersDetails> {
+class _lawyersDetailsState extends State<lawyersDetails> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

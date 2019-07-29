@@ -253,7 +253,7 @@ class _CallUsState extends State<CallUs>
           children: <Widget>[
             new Expanded(
               child: new MaterialButton(
-                onPressed: () => _ChackMakeCall(context),
+                onPressed: () => _chackMakeCall(context),
                 color: Color(0xFFFFC400),
                 splashColor: Color(0xFFFFFF00),
                 textColor: Colors.black,
@@ -266,7 +266,7 @@ class _CallUsState extends State<CallUs>
             SizedBox(width: 3.0),
             new Expanded(
               child: new MaterialButton(
-                onPressed: () => _ChackWhatsAppChat(context),
+                onPressed: () => _chackWhatsAppChat(context),
                 color: Color(0xFFFFC400),
                 splashColor: Color(0xFFFFFF00),
                 textColor: Colors.black,
@@ -279,7 +279,7 @@ class _CallUsState extends State<CallUs>
             SizedBox(width: 3.0),
             new Expanded(
               child: new MaterialButton(
-                onPressed: () => _ChackSendEmail(context),
+                onPressed: () => _chackSendEmail(context),
                 color: Color(0xFFFFC400),
                 splashColor: Color(0xFFFFFF00),
                 textColor: Colors.black,
@@ -292,7 +292,7 @@ class _CallUsState extends State<CallUs>
             SizedBox(width: 3.0),
             new Expanded(
               child: new MaterialButton(
-                onPressed: () => _ChackLanchWebSite(context),
+                onPressed: () => _chackLanchWebSite(context),
                 color: Color(0xFFFFC400),
                 splashColor: Color(0xFFFFFF00),
                 textColor: Colors.black,
@@ -308,7 +308,7 @@ class _CallUsState extends State<CallUs>
     );
   }
 
-  _ChackMakeCall(context) {
+  _chackMakeCall(context) {
     Alert(
         context: context,
         title: "إجراء مكالمة",
@@ -336,7 +336,7 @@ class _CallUsState extends State<CallUs>
         ]).show();
   }
 
-  _ChackSendEmail(context) {
+  _chackSendEmail(context) {
     Alert(
         context: context,
         title: "إرسال بريد إلكتروني",
@@ -365,7 +365,7 @@ class _CallUsState extends State<CallUs>
         ]).show();
   }
 
-  _ChackWhatsAppChat(context) {
+  _chackWhatsAppChat(context) {
     Alert(
         context: context,
         title: "إجراء دردشة واتساب",
@@ -393,7 +393,7 @@ class _CallUsState extends State<CallUs>
         ]).show();
   }
 
-  _ChackLanchWebSite(context) {
+  _chackLanchWebSite(context) {
     Alert(
         context: context,
         title: "الذهاب إلى الموقع",

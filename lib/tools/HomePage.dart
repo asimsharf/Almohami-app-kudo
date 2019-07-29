@@ -1,5 +1,4 @@
 import 'package:almohami/language/scope_model_wrapper.dart';
-import 'package:almohami/language/translation.dart';
 import 'package:almohami/tools/SplashScreenPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -12,7 +11,6 @@ class HomePage extends StatelessWidget {
         builder: (context, child, model) => MaterialApp(
               locale: model.appLocal,
               localizationsDelegates: [
-                const TranslationsDelegate(),
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
