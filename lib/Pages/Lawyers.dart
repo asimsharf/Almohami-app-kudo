@@ -30,39 +30,60 @@ class _LawyersState extends State<Lawyers> {
   bool _loading = false;
 
   void getLawyersNames() async {
-    final response = await dio.get('http://almohamigroup.com/api.php');
-    List<ModelLawyers> tempList = <ModelLawyers>[];
-    for (int i = 0; i < response.data.length; i++) {
-      var rest = response.data as List;
-      _Model_Lawyers = rest
-          .map<ModelLawyers>((rest) => ModelLawyers.fromJson(rest))
-          .toList();
-      tempList.add(ModelLawyers.fromJson(response.data[i]));
-    }
-    setState(() {
-      if (response.statusCode == 200) {
-        names = tempList;
-        names.shuffle();
-        _Model_Lawyers = names;
+    try {
+      final response = await dio.get('http://almohamigroup.com/api.php');
+      List<ModelLawyers> tempList = <ModelLawyers>[];
+      for (int i = 0; i < response.data.length; i++) {
+        var rest = response.data as List;
+        _Model_Lawyers = rest
+            .map<ModelLawyers>(
+              (rest) => ModelLawyers.fromJson(rest),
+        )
+            .toList();
+        tempList.add(
+          ModelLawyers.fromJson(
+            response.data[i],
+          ),
+        );
       }
-    });
+      setState(
+            () {
+          if (response.statusCode == 200) {
+            names = tempList;
+            names.shuffle();
+            _Model_Lawyers = names;
+          }
+        },
+      );
+    } catch (Exception) {
+      return null;
+    }
   }
 
   List<ModelLawyers> _Model_Lawyers = <ModelLawyers>[];
   Future<List<ModelLawyers>> getLawyers() async {
     String link = "http://almohamigroup.com/api.php";
-    var response = await http
-        .get(Uri.encodeFull(link), headers: {"Accept": "application/json"});
-    setState(() {
-      if (response.statusCode == 200) {
-        var data = json.decode(response.body);
-        var rest = data as List;
-        _Model_Lawyers = rest
-            .map<ModelLawyers>((rest) => ModelLawyers.fromJson(rest))
-            .toList();
-        _loading = false;
-      }
-    });
+
+    try {
+      final response = await http
+          .get(Uri.encodeFull(link), headers: {"Accept": "application/json"});
+      setState(
+            () {
+          if (response.statusCode == 200) {
+            var data = json.decode(response.body);
+            var rest = data as List;
+            _Model_Lawyers = rest
+                .map<ModelLawyers>(
+                  (rest) => ModelLawyers.fromJson(rest),
+            )
+                .toList();
+            _loading = false;
+          }
+        },
+      );
+    } catch (Exception) {
+      return _Model_Lawyers;
+    }
     return _Model_Lawyers;
   }
 
@@ -78,24 +99,32 @@ class _LawyersState extends State<Lawyers> {
   );
 
   _LawyersState() {
-    _filter.addListener(() {
-      if (_filter.text.isEmpty) {
-        setState(() {
-          _searchText = "";
-          _Model_Lawyers = names;
-        });
-      } else {
-        setState(() {
-          _searchText = _filter.text;
-        });
-      }
-    });
+    _filter.addListener(
+          () {
+        if (_filter.text.isEmpty) {
+          setState(
+                () {
+              _searchText = "";
+              _Model_Lawyers = names;
+            },
+          );
+        } else {
+          setState(
+                () {
+              _searchText = _filter.text;
+            },
+          );
+        }
+      },
+    );
   }
 
   Future<Null> _refresh() {
-    return getLawyers().then((modelCen) {
-      setState(() => _Model_Lawyers = modelCen);
-    });
+    return getLawyers().then(
+          (modelCen) {
+        setState(() => _Model_Lawyers = modelCen);
+      },
+    );
   }
 
   @override
@@ -106,9 +135,11 @@ class _LawyersState extends State<Lawyers> {
     );
     this.getLawyers();
     this.getLawyersNames();
-    setState(() {
-      _loading = true;
-    });
+    setState(
+          () {
+        _loading = true;
+      },
+    );
   }
 
   @override
@@ -123,7 +154,9 @@ class _LawyersState extends State<Lawyers> {
             children: <Widget>[
               Expanded(
                 child: _loading
-                    ? Center(child: CircularProgressIndicator())
+                    ? Center(
+                  child: CircularProgressIndicator(),
+                )
                     : _buildProductList(),
               ),
             ],
@@ -155,6 +188,14 @@ class _LawyersState extends State<Lawyers> {
         itemCount: _Model_Lawyers.length,
         itemBuilder: (BuildContext context, index) {
           final LawyersObj = _Model_Lawyers[index];
+          try {
+            if (LawyersObj.profile_photo == null) {
+              LawyersObj.profile_photo = '';
+            }
+          } catch (Exception) {
+            return null;
+          }
+
           return new GestureDetector(
             child: Card(
               elevation: 0.0,
@@ -331,7 +372,7 @@ class _LawyersState extends State<Lawyers> {
               Icons.search,
               color: Colors.black,
             ),
-            hintText: 'بحث بإسم المستشفى...',
+            hintText: 'بحث بإسم المحامي...',
             hintStyle: TextStyle(
                 fontFamily: ArabicFonts.Cairo,
                 package: 'google_fonts_arabic',
