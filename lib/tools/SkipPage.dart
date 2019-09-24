@@ -2,6 +2,7 @@ import 'package:almohami/Pages/MainPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts_arabic/fonts.dart';
 import 'package:intro_slider/intro_slider.dart';
+import 'package:intro_slider/slide_object.dart';
 
 class SkipPage extends StatefulWidget {
   @override

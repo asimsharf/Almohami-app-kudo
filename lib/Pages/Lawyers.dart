@@ -238,7 +238,10 @@ class _LawyersState extends State<Lawyers> {
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        '${_lawyersObj.Office}',
+                                        '${_lawyersObj.Office.length > 30
+                                            ? _lawyersObj.Office.substring(
+                                            0, 29)
+                                            : _lawyersObj.Office}',
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                           fontSize: 15.0,
@@ -254,7 +257,10 @@ class _LawyersState extends State<Lawyers> {
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        "${_lawyersObj.work_fields}",
+                                        "${_lawyersObj.work_fields.length > 30
+                                            ? _lawyersObj.work_fields.substring(
+                                            0, 29)
+                                            : _lawyersObj.work_fields}",
                                         softWrap: false,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
@@ -279,7 +285,10 @@ class _LawyersState extends State<Lawyers> {
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        '${_lawyersObj.officename}',
+                                        '${_lawyersObj.officename.length > 30
+                                            ? _lawyersObj.officename.substring(
+                                            0, 29)
+                                            : _lawyersObj.officename}',
                                         style: TextStyle(
                                           fontSize: 8.0,
                                           color: Colors.red,

@@ -47,11 +47,17 @@ class _PdfState extends State<Pdf> {
         ),
       ),
       body: Center(
-          child: _isLoading
-              ? Center(child: CircularProgressIndicator())
-              : PDFViewer(
-                  document: document,
-                  tooltip: PDFViewerTooltip(first: "Batatas"))),
+        child: _isLoading
+            ? Center(
+          child: CircularProgressIndicator(),
+        )
+            : PDFViewer(
+          document: document,
+          tooltip: PDFViewerTooltip(
+            first: "Batatas",
+          ),
+        ),
+      ),
     );
   }
 }

@@ -218,8 +218,9 @@ class _lawyersDetailsState extends State<lawyersDetails> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => Pdf(
-                                      user_id: widget.user_id,
-                                      pdf_docs: widget.pdf_docs),
+                                    user_id: widget.user_id,
+                                    pdf_docs: widget.pdf_docs,
+                                  ),
                                 ),
                               );
                             },
