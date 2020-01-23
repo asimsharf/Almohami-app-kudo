@@ -128,7 +128,7 @@ class _CallUsState extends State<CallUs>
                             width: 20.0,
                           ),
                           Text(
-                            "http://almohamigroup.com/",
+                            "http://mohamigroup.com/",
                             style: TextStyle(
                               fontFamily: ArabicFonts.Cairo,
                               package: 'google_fonts_arabic',
@@ -407,7 +407,7 @@ class _CallUsState extends State<CallUs>
         ),
         buttons: [
           DialogButton(
-            onPressed: () => launch("http://almohamigroup.com/"),
+            onPressed: () => launch("http://mohamigroup.com/"),
             color: Color(0xFFFFC400),
             child: Text(
               "موافق",

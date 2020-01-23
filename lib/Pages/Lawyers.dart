@@ -16,7 +16,6 @@ class Lawyers extends StatefulWidget {
 }
 
 class _LawyersState extends State<Lawyers> {
-  //---------------------------------------------------------------
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
   final TextEditingController _filter = new TextEditingController();
@@ -31,7 +30,7 @@ class _LawyersState extends State<Lawyers> {
 
   void getLawyersNames() async {
     try {
-      final response = await dio.get('http://almohamigroup.com/api.php');
+      final response = await dio.get('http://mohamigroup.com/api.php');
       List<ModelLawyers> tempList = <ModelLawyers>[];
       for (int i = 0; i < response.data.length; i++) {
         var rest = response.data as List;
@@ -61,8 +60,9 @@ class _LawyersState extends State<Lawyers> {
   }
 
   List<ModelLawyers> _modelLawyers = <ModelLawyers>[];
+
   Future<List<ModelLawyers>> getLawyers() async {
-    String link = "http://almohamigroup.com/api.php";
+    String link = "http://mohamigroup.com/api.php";
 
     try {
       final response = await http
@@ -72,11 +72,13 @@ class _LawyersState extends State<Lawyers> {
           if (response.statusCode == 200) {
             var data = json.decode(response.body);
             var rest = data as List;
+
             _modelLawyers = rest
                 .map<ModelLawyers>(
                   (rest) => ModelLawyers.fromJson(rest),
             )
                 .toList();
+
             _loading = false;
           }
         },
@@ -87,7 +89,6 @@ class _LawyersState extends State<Lawyers> {
     return _modelLawyers;
   }
 
-  //---------------------------------------------------------------
   Widget _appBarTitle = new Text(
     'المحامين',
     style: TextStyle(
@@ -219,7 +220,7 @@ class _LawyersState extends State<Lawyers> {
                             child: FadeInImage.assetNetwork(
                               placeholder: 'assets/images/icon.png',
                               image:
-                              'http://almohamigroup.com/wp-content/uploads/ultimatemember/${_lawyersObj
+                              'http://mohamigroup.com/wp-content/uploads/ultimatemember/${_lawyersObj
                                   .user_id}/${_lawyersObj.profile_photo}',
                             ),
                           ),

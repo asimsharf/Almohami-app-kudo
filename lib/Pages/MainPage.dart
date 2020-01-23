@@ -119,7 +119,7 @@ class _MainPageState extends State<MainPage> {
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                           fontSize: 20.0)),
-                  onTap: () => launch("http://almohamigroup.com/"),
+                  onTap: () => launch("http://mohamigroup.com/"),
                 ),
                 new Divider(
                   color: Colors.black,

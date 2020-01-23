@@ -54,7 +54,8 @@ class _lawyersDetailsState extends State<lawyersDetails> {
                   fit: BoxFit.fill,
                   placeholder: 'assets/images/default.jpg',
                   image:
-                      'http://almohamigroup.com/wp-content/uploads/ultimatemember/${widget.user_id}/${widget.cover_photo}',
+                  'http://mohamigroup.com/wp-content/uploads/ultimatemember/${widget
+                      .user_id}/${widget.cover_photo}',
                 ),
               ),
               new Expanded(
@@ -259,7 +260,8 @@ class _lawyersDetailsState extends State<lawyersDetails> {
                               fit: BoxFit.fill,
                               placeholder: 'assets/images/icon.png',
                               image:
-                                  'http://almohamigroup.com/wp-content/uploads/ultimatemember/${widget.user_id}/${widget.profile_photo}',
+                              'http://mohamigroup.com/wp-content/uploads/ultimatemember/${widget
+                                  .user_id}/${widget.profile_photo}',
                             ),
                           ),
                         ),

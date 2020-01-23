@@ -407,7 +407,7 @@ class _HelpState extends State<Help>
         ),
         buttons: [
           DialogButton(
-            onPressed: () => launch("http://almohamigroup.com/"),
+            onPressed: () => launch("http://mohamigroup.com/"),
             color: Color(0xFFFFC400),
             child: Text(
               "موافق",
